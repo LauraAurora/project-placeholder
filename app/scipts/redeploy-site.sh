@@ -1,14 +1,17 @@
-#!/bin/bash
+#!/bin/bash -x
 
-# 1. Kills all existing tmux sessions.
-tmux kill-server;
+#1. Kills all existing tmux sessions
+tmux kill-server
 
-# 2. cd into project folder
-cd "project-placeholder";
+#2. cd into projet folder
+cd ~/project-placeholder
 
-# 3. Run for the latests changes
-git fetch --all && git reset  --hard origin/main;
+#3. Run for the latests changes
+git fetch --all && git reset origin/main
 
-# 4&5. Python VM and new detached Tmux session
-tmux new-session -d -s process "cd project-placeholder && source venv/bin/activate && 
-pip install -q -r requirements.txt && flask run --host=0.0.0.0";
+#Activate Python Virtual ENV & Install requirements
+source python-virtualenv/bin/activate && pip3 install -q -r requirements.txt
+
+#Start tmux
+systemctl daemon-reload
+systemctl restart myportfolio

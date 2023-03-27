@@ -1,3 +1,3 @@
 #!/bin/bash
 
-$PWD/python-virtualenv/bin/activate -m unittest discover -v tests/
+$PWD/python-virtualenv/bin/python -m unittest discover -v tests/

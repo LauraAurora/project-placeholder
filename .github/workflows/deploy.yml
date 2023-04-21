@@ -8,7 +8,7 @@ on:
 
 jobs:
   deploy:
-    name: "Deploy to VPS"
+    name: "Deploy site"
     runs-on: ubuntu-latest
     steps:
       - name: Configure SSH
@@ -29,4 +29,4 @@ jobs:
           SSH_IP: ${{ secrets.SSH_IP }}
 
       - name: Print project root directory
-        run: ssh my-vps 'cd ${{ secrets.PROJECT_ROOT }} && pwd'
+        run: ssh my-vps '~/redeploy-site.sh'
